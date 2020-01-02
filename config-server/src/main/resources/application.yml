@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: spring-cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/KissLouis/config-server
+          search-paths: respo
+
+server:
+  #设置Web容器端口号
+  port: 7001
+  tomcat:
+    #表示配置tomcat请求编码
+    uri-encoding: UTF-8
+
+
+#Eureka 相关配置
+eureka:
+  client:
+    # 是否把自己作为服务注册到其他服务注册中心
+    service-url:
+      defaultZone: http://localhost:7000/eureka/
+    registry-fetch-interval-seconds: 5
+  instance:
+    # 把ip地址注册到Eureka服务中
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
