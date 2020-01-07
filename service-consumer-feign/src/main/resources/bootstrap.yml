@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:7001/
+      name: service-consumer-feign
+      label: master
+      profile: dev
+      username: admin
+      password: 123456
