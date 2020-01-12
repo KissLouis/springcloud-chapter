@@ -11,8 +11,15 @@ server:
 
 #Eureka 相关配置
 eureka:
+  client:
+    # 是否把自己作为服务注册到其他服务注册中心
+    service-url:
+      defaultZone: http://localhost:7000/eureka/
+    registry-fetch-interval-seconds: 5
   instance:
-    hostname: localhost
+    # 把ip地址注册到Eureka服务中
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
     # 表示eureka client间隔多久去拉取服务注册信息，默认为30秒，如果要迅速获取服务注册状态，可以缩小该值
     lease-renewal-interval-in-seconds: 15
     # 表示eureka server至上一次收到client的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则将移除该instance。
@@ -21,7 +28,3 @@ eureka:
     # 如果该值设置太小了，则instance则很可能因为临时的网络抖动而被摘除掉。
     # 该值至少应该大于 leaseRenewalIntervalInSeconds
     lease-expiration-duration-in-seconds: 45
-  client:
-    eureka-server-connect-timeout-seconds: 5
-    service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
