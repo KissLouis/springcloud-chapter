@@ -3,32 +3,31 @@ spring:
     name: spring-cloud-hystrix-dashboard-server
 
 server:
-  #ÉèÖÃWebÈİÆ÷¶Ë¿ÚºÅ
+  #è®¾ç½®Webå®¹å™¨ç«¯å£å·
   port: 7003
   tomcat:
-    #±íÊ¾ÅäÖÃtomcatÇëÇó±àÂë
+    #è¡¨ç¤ºé…ç½®tomcatè¯·æ±‚ç¼–ç 
     uri-encoding: UTF-8
 
-#Eureka Ïà¹ØÅäÖÃ
+#Eureka ç›¸å…³é…ç½®
 eureka:
   client:
-    # ÊÇ·ñ°Ñ×Ô¼º×÷Îª·şÎñ×¢²áµ½ÆäËû·şÎñ×¢²áÖĞĞÄ
+    # æ˜¯å¦æŠŠè‡ªå·±ä½œä¸ºæœåŠ¡æ³¨å†Œåˆ°å…¶ä»–æœåŠ¡æ³¨å†Œä¸­å¿ƒ
     service-url:
       defaultZone: http://localhost:7000/eureka/
     registry-fetch-interval-seconds: 5
   instance:
-    # °ÑipµØÖ·×¢²áµ½Eureka·şÎñÖĞ
+    # æŠŠipåœ°å€æ³¨å†Œåˆ°EurekaæœåŠ¡ä¸­
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    # ±íÊ¾eureka client¼ä¸ô¶à¾ÃÈ¥À­È¡·şÎñ×¢²áĞÅÏ¢£¬Ä¬ÈÏÎª30Ãë£¬Èç¹ûÒªÑ¸ËÙ»ñÈ¡·şÎñ×¢²á×´Ì¬£¬¿ÉÒÔËõĞ¡¸ÃÖµ
+    # è¡¨ç¤ºeureka clienté—´éš”å¤šä¹…å»æ‹‰å–æœåŠ¡æ³¨å†Œä¿¡æ¯ï¼Œé»˜è®¤ä¸º30ç§’ï¼Œå¦‚æœè¦è¿…é€Ÿè·å–æœåŠ¡æ³¨å†ŒçŠ¶æ€ï¼Œå¯ä»¥ç¼©å°è¯¥å€¼
     lease-renewal-interval-in-seconds: 15
-    # ±íÊ¾eureka serverÖÁÉÏÒ»´ÎÊÕµ½clientµÄĞÄÌøÖ®ºó£¬µÈ´ıÏÂÒ»´ÎĞÄÌøµÄ³¬Ê±Ê±¼ä£¬ÔÚÕâ¸öÊ±¼äÄÚÈôÃ»ÊÕµ½ÏÂÒ»´ÎĞÄÌø£¬Ôò½«ÒÆ³ı¸Ãinstance¡£
-    # Ä¬ÈÏÎª90Ãë
-    # Èç¹û¸ÃÖµÌ«´ó£¬ÔòºÜ¿ÉÄÜ½«Á÷Á¿×ª·¢¹ıÈ¥µÄÊ±ºò£¬¸ÃinstanceÒÑ¾­²»´æ»îÁË¡£
-    # Èç¹û¸ÃÖµÉèÖÃÌ«Ğ¡ÁË£¬ÔòinstanceÔòºÜ¿ÉÄÜÒòÎªÁÙÊ±µÄÍøÂç¶¶¶¯¶ø±»Õª³ıµô¡£
-    # ¸ÃÖµÖÁÉÙÓ¦¸Ã´óÓÚ leaseRenewalIntervalInSeconds
+    # è¡¨ç¤ºeureka serverè‡³ä¸Šä¸€æ¬¡æ”¶åˆ°clientçš„å¿ƒè·³ä¹‹åï¼Œç­‰å¾…ä¸‹ä¸€æ¬¡å¿ƒè·³çš„è¶…æ—¶æ—¶é—´ï¼Œåœ¨è¿™ä¸ªæ—¶é—´å†…è‹¥æ²¡æ”¶åˆ°ä¸‹ä¸€æ¬¡å¿ƒè·³ï¼Œåˆ™å°†ç§»é™¤è¯¥instanceã€‚
+    # é»˜è®¤ä¸º90ç§’
+    # å¦‚æœè¯¥å€¼å¤ªå¤§ï¼Œåˆ™å¾ˆå¯èƒ½å°†æµé‡è½¬å‘è¿‡å»çš„æ—¶å€™ï¼Œè¯¥instanceå·²ç»ä¸å­˜æ´»äº†ã€‚
+    # å¦‚æœè¯¥å€¼è®¾ç½®å¤ªå°äº†ï¼Œåˆ™instanceåˆ™å¾ˆå¯èƒ½å› ä¸ºä¸´æ—¶çš„ç½‘ç»œæŠ–åŠ¨è€Œè¢«æ‘˜é™¤æ‰ã€‚
+    # è¯¥å€¼è‡³å°‘åº”è¯¥å¤§äº leaseRenewalIntervalInSeconds
     lease-expiration-duration-in-seconds: 45
-
 
 management:
   endpoints:
